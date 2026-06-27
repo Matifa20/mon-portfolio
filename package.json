@@ -17,6 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^5.2.1",
-    "nodemailer": "^9.0.1"
+    "dotenv": "^16.4.5",
+    "nodemailer": "^6.9.14",
+    "cors": "^2.8.5"
   }
 }

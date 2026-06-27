@@ -2,8 +2,6 @@ const http = require('http');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-const PORT = 3001;
-
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -176,12 +174,6 @@ const server = http.createServer(async (req, res) => {
   res.writeHead(404, corsHeaders);
   res.end(JSON.stringify({ error: 'Route not found' }));
 });
-
-server.listen(PORT, () => {
-  console.log(`\n✅ Portfolio API running on http://localhost:${PORT}`);
-  console.log(`\n📡 Available endpoints:`);
-  console.log(`   GET  /api/health`);
-  console.log(`   GET  /api/projects`);
-  console.log(`   GET  /api/skills`);
-  console.log(`   POST /api/contact\n`);
-});
+module.exports = (req, res) => {
+  server.emit('request', req, res);
+};
